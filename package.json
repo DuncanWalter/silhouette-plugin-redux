@@ -1,6 +1,6 @@
 {
   "name": "silhouette-plugin-redux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A silhouette plugin allowing Silhouette to house a redux store.",
   "main": "dist/index.bundle.js",
   "scripts": {
