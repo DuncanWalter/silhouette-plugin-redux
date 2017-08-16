@@ -7,7 +7,7 @@ export default function({ compose, enhancers, middleware, state }){
             let c = (compose || __compose__);
             let m = applyMiddleware(...(middleware || []));
             let e = c(...(enhancers || []), m);
-            let i = r => Object.assign(next(r), __createStore__(r, e));
+            let i = r => Object.assign(next(r), __createStore__(r, state || { }, e));
             let s = reducer => (state, action) => {
                 return action.type === '@@redux/INIT' ? state : reducer(state, action); 
             }; 
