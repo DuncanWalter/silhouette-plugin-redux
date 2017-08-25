@@ -30,7 +30,8 @@
     "webpack": "^3.4.1"
   },
   "dependencies": {
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "silhouette-core": "^1.5.2"
   },
   "publishConfig": {
     "access": "public"

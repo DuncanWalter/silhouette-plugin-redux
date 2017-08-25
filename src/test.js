@@ -1,12 +1,26 @@
 import tap from 'tap'
 import { create } from 'silhouette-core'
-import reduxPlugin from './index.js'
-const sil = create(reduxPlugin({
-    state: { a: 3 }
-}));
+import reduxPlugin, { useStore } from './index.js'
+import { createStore } from 'redux'
 
-tap.test('rxjsPlugin tests', t => {
+tap.test('reduxPlugin tests', t => {
+
+    let i = 0;
+    let sil = create(reduxPlugin({
+        middleware: [ store => next => action => next({ type: ++i }) ],
+    }));
+    
     t.true(sil);
-    t.true(sil.a);
+    
+    sil.dispatch('stuff');
+
+    t.same(i, 1);
+    
+    let store = createStore(i => i, { i: 'blue' });
+    let s2 = create(useStore(store, i => i));
+    t.true(s2.i);
+
     t.end();
+
 });
+
