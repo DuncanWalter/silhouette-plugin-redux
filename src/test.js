@@ -18,7 +18,7 @@ tap.test('reduxPlugin tests', t => {
     
     let store = createStore(i => i, { i: 'blue' });
     let s2 = create(useStore(store, i => i));
-    t.true(s2.i);
+    t.true(s2.select('i'));
 
     t.end();
 

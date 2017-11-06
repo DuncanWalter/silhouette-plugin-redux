@@ -54,9 +54,10 @@ export function useStore(store, reducer){
         },
         prototype: {
             dispatch: next => function(action){
-                this[symbols.__root__][symbols.__reducers__][action.type] = reducer;
+                this[symbols.__root__][symbols.__reducers__].set([action.type], reducer);
                 next.call(this, action);
             },
         }
     }
 };
+
